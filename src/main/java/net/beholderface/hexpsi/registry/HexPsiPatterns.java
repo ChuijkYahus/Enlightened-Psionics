@@ -61,9 +61,7 @@ public class HexPsiPatterns {
     }));*/
 
     public static HexPattern register(HexPattern pattern, String name, Action action){
-        ACTIONS.register(name, ()->{
-            return Registry.register(HexActions.REGISTRY, new ResourceLocation(HexPsi.MODID, name), new ActionRegistryEntry(pattern, action));
-        });
+        ACTIONS.register(name, ()->new ActionRegistryEntry(pattern, action));
         return pattern;
     }
 
